@@ -60,4 +60,6 @@ game1.add_player(player1)
 game1.add_player(player2)
 game1.add_player(player3)
 
+puts game1.title
+
 game1.play
