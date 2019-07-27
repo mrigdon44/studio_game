@@ -11,3 +11,6 @@ game1.add_player(player2)
 game1.add_player(player3)
 
 game1.play
+
+#Created separate files for the player class and the game class in this lesson.
+#Lesson demonstrated how a separate file can be called into existing file.
