@@ -17,6 +17,7 @@ end
 if __FILE__== $0
 die1 = Die.new
 puts die1.number
+die1 = Die.new(7, 25)
 die1.roll
 puts die1.number
 end

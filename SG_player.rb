@@ -11,6 +11,10 @@ def score
   @health + @name.length
 end
 
+def <=> (other)
+  other.score <=> score
+end
+
 def to_s
   "I'm #{@name} with a health of #{@health} and a score of #{score}"
 end

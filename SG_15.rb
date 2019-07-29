@@ -1,3 +1,7 @@
+#used blocks to do more complex iterations.  Look at print_stats method at end of this file.
+#this is the game file.  Also made changes to player class file.  made a specific sort method for
+#the player class.  
+
 require_relative 'SG_player'
 require_relative 'SG_gameturn.rb'
 
