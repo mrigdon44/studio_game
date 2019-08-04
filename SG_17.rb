@@ -1,3 +1,6 @@
+#created a hash with for the treasures and used that to track points from the player_stats
+#finding treasures
+
 class Player
   attr_reader :health
   attr_accessor :name

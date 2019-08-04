@@ -1,8 +1,8 @@
 require_relative 'SG_die'
 require_relative 'SG_player'
+require_relative 'SG_treasuretrove'
 
 module GameTurn
-
   def self.take_turn(player)
     die = Die.new
     case die.roll
@@ -13,5 +13,7 @@ module GameTurn
     else
       player.woot
     end
+    treasure = TreasureTrove.random
+    player.found_treasure(treasure)
   end
 end
