@@ -1,4 +1,4 @@
-#created a hash with for the treasures and used that to track points from the player_stats
+#created a hash for the treasures and used it to track the points that players received for 
 #finding treasures
 
 class Player
