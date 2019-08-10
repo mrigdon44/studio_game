@@ -36,7 +36,7 @@ class Game
 
     1.upto(rounds) do |count|
       puts "\nRound #{count}:"
-    @players.each do |player|
+      @players.each do |player|
         GameTurn.take_turn(player)
         puts player
       end
@@ -44,23 +44,28 @@ class Game
   puts "\n"
 
   def player_stats
-    strong, wimpy = @players.partition {|player| player.strong?}
+    def self.print_stats(player)
+      strong, wimpy = @players.partition {|player| player.strong?}
 
-    puts "#{@title.capitalize} statistics:"
+      puts "#{@title.capitalize} statistics:"
 
-    puts "\n#{strong.size} strong players:"
-    strong.each do |player|
-      puts "#{player.name} #{player.health}"
-    end
+      puts "\n#{strong.size} strong players:"
+      strong.each do |player|
+        puts "#{player.name} #{player.health}"
+      end
 
-    puts "\n#{wimpy.size} wimpy players:"
-    wimpy.each do |player|
-      puts "#{player.name} #{player.health}"
-    end
+      puts "\n#{wimpy.size} wimpy players:"
+      wimpy.each do |player|
+        puts "#{player.name} #{player.health}"
+      end
 
-    @players.each do |player|
-      puts "#{player.name}'s point totals:"
-      puts "#{player.points} grand total points"
+      @players.sort.each do |player|
+        puts "\n#{player.name}'s point totals:"
+        player.each_found_treasure do |treasure|
+          puts "#{treasure.points} total #{treasure.name} points"
+        end
+        puts "#{player.points} grand total points"
+      end
     end
 
     puts "\n#{total_points} total points from treasures found"
