@@ -10,47 +10,52 @@ class Player
     @found_treasures = Hash.new(0)
   end
 
-def found_treasure(treasure)
-  @found_treasures[treasure.name] += treasure.points
-  puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
-  puts "#{@name}'s treasures: #{@found_treasures}'"
-end
-
-def each_found_treasure
-  @found_treasures.each do |name, points|
-    yield Treasure.new(name, points)
+  def self.from_csv(string)
+    name, health = string.split(',')
+    Player.new(name, Integer(health))
   end
-end
 
-def points
-  @found_treasures.values.reduce(0, :+)
-end
+  def found_treasure(treasure)
+    @found_treasures[treasure.name] += treasure.points
+    puts "#{@name} found a #{treasure.name} worth #{treasure.points} points"
+    puts "#{@name}'s treasures: #{@found_treasures}'"
+  end
 
-def score
-  @health + points
-end
+  def each_found_treasure
+    @found_treasures.each do |name, points|
+      yield Treasure.new(name, points)
+    end
+  end
 
-def <=> (other)
-  other.score <=> score
-end
+  def points
+    @found_treasures.values.reduce(0, :+)
+  end
 
-def to_s
-  "I'm #{@name} with a health of #{@health}, with points of #{points}, and a score of #{score}"
-end
+  def score
+    @health + points
+  end
 
-def blam
-  @health -= 10
-  puts "#{@name} got Blammed!!!"
-end
+  def <=> (other)
+    other.score <=> score
+  end
 
-def woot
-  @health += 15
-  puts "#{@name} got w00ted!!!"
-end
+  def to_s
+    "I'm #{@name} with a health of #{@health}, with points of #{points}, and a score of #{score}"
+  end
 
-def strong?
-  @health > 100
-end
+  def blam
+    @health -= 10
+    puts "#{@name} got Blammed!!!"
+  end
+
+  def woot
+    @health += 15
+    puts "#{@name} got w00ted!!!"
+  end
+
+  def strong?
+    @health > 100
+  end
 end
 
 

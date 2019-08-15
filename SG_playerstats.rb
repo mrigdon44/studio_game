@@ -2,7 +2,7 @@ require_relative 'SG_player'
 require_relative 'SG_game'
 
 module PlayerStats
-  ?players = players
+
   def self.print_stats(player)
     strong, wimpy = players.partition {|player| player.strong?}
 
